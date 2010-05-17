@@ -1,7 +1,7 @@
 #### iGitHub
-jQTouch powered Web App for FASTER GitHub repository navigation and code viewing on the iPhone & iPod Touch. [ + iPad coming soon ]
+iGitHub is all about READING GitHub repository source code on you iPhone & iPod Touch. 
 
-iGitHub is all about READING your GitHub repository source code. It is not concerned with commits, networks, watching, forks, etc... Just navigating your projects folders and viewing your files... *fast and simple!*
+It is not concerned with commits, networks, watching, forks, etc... Just navigating your projects folders and viewing your files... *fast and simple!*
 
 #### Staging URL
 http://igithub.heroku.com/
