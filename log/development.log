@@ -1,0 +1,136 @@
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-05-18 14:41:11) [GET]
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 80ms (View: 3, DB: 0) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:41:41) [GET]
+
+ActionController::RoutingError (No route matches "/public/jqtouch/demos/igithub/index.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:42:04) [GET]
+
+ActionController::RoutingError (No route matches "/public/jqtouch/demos/igithub/index.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:42:33) [GET]
+
+ActionController::RoutingError (No route matches "/public/jqtouch/demos/igithub/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:42:42) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/jqtouch.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:46:56) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/jqtouch.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:57:40) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/ajax.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:57:44) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/ajax.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:57:56) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/ajax.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:57:57) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/ajax.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:57:57) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/ajax.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:58:18) [GET]
+
+ActionController::RoutingError (No route matches "/themes/jqt/theme.min.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:58:18) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/jquery.1.3.2.min.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:58:18) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/jqtouch.min.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:58:18) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/jqtouch.min.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 14:58:18) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/jqtouch.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-18 15:12:59) [GET]
+
+ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/jqtouch.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
