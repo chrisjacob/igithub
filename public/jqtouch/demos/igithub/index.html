@@ -48,6 +48,15 @@
             body.fullscreen #home .info {
                 display: none;
             }
+						body > .blob {
+							background: #fff;
+						}
+						body.profile > .blob {
+							width:320px;
+						}
+						body.landscape > .blob {
+							width:480px;
+						}
         </style>
     </head>
     <body>
@@ -91,8 +100,8 @@
                 <li class="arrow"><a href="#folder-a-folder-3">Folder 3</a></li>
             </ul>
             <ul class="rounded">
-                <li class="arrow"><a href="#folder-a-file-raw">File-RAW.rb</a></li>
-                <li class="arrow"><a href="#folder-a-file-raw-fullscreen">File_RAW_Fullscreen.html.erb</a></li>
+                <li><a href="#folder-a-file-raw">File-RAW_with-realy-long-name.rb</a></li>
+                <li><a href="#folder-a-file-raw-fullscreen">File_RAW_Fullscreen.html.erb</a></li>
             </ul>
         </div>
 	        <div id="folder-a-folder-1">
@@ -112,11 +121,11 @@
 		                <a class="back" href="#">&nbsp; . . &nbsp;</a>
 		            </div>
 		            <ul class="rounded">
-		                <li class="arrow"><a href="#folder-a-folder-1-folder-x-file-raw">File Raw</a></li>
-		                <li class="arrow"><a href="#folder-a-folder-1-folder-x-file-sexy">File Sexy</a></li>
+		                <li><a href="#folder-a-folder-1-folder-x-file-raw">File Raw</a></li>
+		                <li><a href="#folder-a-folder-1-folder-x-file-sexy">File Sexy</a></li>
 		            </ul>
 		        </div>
-			        <div id="folder-a-folder-1-folder-x-file-raw">
+			        <div id="folder-a-folder-1-folder-x-file-raw" class="blob">
 			            <div class="toolbar">
 			                <h1></h1>
 			                <a class="back" href="#">&nbsp; . . &nbsp;</a>
@@ -136,7 +145,7 @@
 										</pre>
 									</div>
 			        </div>
-			        <div id="folder-a-folder-1-folder-x-file-sexy">
+			        <div id="folder-a-folder-1-folder-x-file-sexy" class="blob">
 			            <div class="toolbar">
 			                <h1></h1>
 			                <a class="back" href="#">&nbsp; . . &nbsp;</a>
@@ -192,7 +201,7 @@
 	                <p>Dead end.</p>
 	            </div>
 	        </div>
-	        <div id="folder-a-file-raw">
+	        <div id="folder-a-file-raw" class="blob">
 	            <div class="toolbar">
 	                <h1></h1>
 	                <a class="back" href="#">&nbsp; . . &nbsp;</a>
@@ -212,7 +221,7 @@
 								</pre>
 							</div>
 	        </div>
-	        <div id="folder-a-file-raw-fullscreen">
+	        <div id="folder-a-file-raw-fullscreen" class="blob">
 	            <div class="code">
 								<pre>
 &lt;div id=&quot;folder-a/folder-1/folder-x&quot;&gt;
