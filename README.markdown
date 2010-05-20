@@ -4,7 +4,7 @@ iGitHub is all about READING GitHub repository source code on your iPhone & iPod
 It is not concerned with commits, networks, watching, forks, etc... Just navigating the projects' folders and viewing it's files... *fast and simple!*
 
 #### Staging URL
-http://igithub.heroku.com/
+http://igithub.heroku.com
 
 #### Tech
 * Rails 2.3.5
