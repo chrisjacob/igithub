@@ -8,7 +8,7 @@ body > .bg_white {
 	background: #fff;
 }
 body > .blob {
-	overflow: scroll;
+	overflow: visible;
 }
 body.profile > .blob {
 	width:320px;
