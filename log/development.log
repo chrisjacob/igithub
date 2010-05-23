@@ -134,3 +134,155 @@ ActionController::RoutingError (No route matches "/jqtouch/demos/igithub/jqtouch
   
 
 Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDemos (20100523121133)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "demos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100523121133')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("demos")[0m
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 22:42:26) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 43ms (View: 40, DB: 0) | 200 OK [http://localhost/github/home]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:42:26) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jqtouch/extensions/jqt.autotitles.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:42:26) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/jqtouch/jqtouch/jqtouch.min.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:42:26) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jqtouch/jqtouch/jquery.1.3.2.min.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:42:26) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jqtouch/jqtouch/jqtouch.min.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:42:26) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/jqtouch/themes/apple/theme.min.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 22:45:24) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 39ms (View: 36, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:45:24) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jqtouch/jqtouch/jqtouch.min.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:45:25) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/jqtouch/jqtouch/jqtouch.min.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:45:25) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jqtouch/jqtouch/jquery.1.3.2.min.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:45:25) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jqtouch/extensions/jqt.autotitles.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:45:25) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/jqtouch/themes/apple/theme.min.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 22:46:04) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:46:26) [GET]
+
+ActionController::RoutingError (No route matches "/ajax.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 22:46:57) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 22:49:17) [GET]
+
+ActionController::RoutingError (No route matches "/demo" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing DemosController#index (for 127.0.0.1 at 2010-05-23 22:49:21) [GET]
+  [4;36;1mDemo Load (0.4ms)[0m   [0;1mSELECT * FROM "demos" [0m
+Rendering template within layouts/demos
+Rendering demos/index
+Completed in 61ms (View: 52, DB: 0) | 200 OK [http://localhost/demos]

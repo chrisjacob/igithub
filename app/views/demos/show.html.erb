@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @demo.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @demo.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_demo_path(@demo) %> |
+<%= link_to 'Back', demos_path %>

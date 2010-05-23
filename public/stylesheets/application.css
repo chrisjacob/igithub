@@ -1,0 +1,18 @@
+body {
+	background-color: #000;
+}
+body.fullscreen #home .info {
+    display: none;
+}
+body > .bg_white {
+	background: #fff;
+}
+body > .blob {
+	overflow: scroll;
+}
+body.profile > .blob {
+	width:320px;
+}
+body.landscape > .blob {
+	width:480px;
+}

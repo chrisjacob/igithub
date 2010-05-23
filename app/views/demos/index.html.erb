@@ -1,0 +1,22 @@
+<h1>Listing demos</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+
+<% @demos.each do |demo| %>
+  <tr>
+    <td><%=h demo.title %></td>
+    <td><%=h demo.body %></td>
+    <td><%= link_to 'Show', demo %></td>
+    <td><%= link_to 'Edit', edit_demo_path(demo) %></td>
+    <td><%= link_to 'Destroy', demo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New demo', new_demo_path %>
