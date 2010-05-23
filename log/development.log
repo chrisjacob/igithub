@@ -286,3 +286,39 @@ Processing DemosController#index (for 127.0.0.1 at 2010-05-23 22:49:21) [GET]
 Rendering template within layouts/demos
 Rendering demos/index
 Completed in 61ms (View: 52, DB: 0) | 200 OK [http://localhost/demos]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 22:56:44) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 23:00:09) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 23:00:49) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 23:03:16) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 23:03:32) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-23 23:06:17) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/]
