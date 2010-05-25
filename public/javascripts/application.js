@@ -188,8 +188,19 @@ $(function(){
 													console.log(this);
 													// console.log($.keys(this));
 
-													$('#code').append('<p>'+ object_name +'</p><pre></pre>');
-													$('#code > pre:last').text(this.data); // .text() calls the DOM method .createTextNode(), which replaces special characters with their HTML entity equivalents (such as &lt;  for <).
+													if(this.mime_type == 'text/plain')
+													{
+														$('#code').append('<p>'+ object_name +'</p><pre></pre>');
+														$('#code > pre:last').text(this.data);
+														// .text() calls the DOM method .createTextNode(), which replaces special characters with their HTML entity equivalents (such as &lt;  for <).
+													}
+													else
+													{
+														$('#code').append('<p>'+ object_name +'</p><pre class="prettyprint"></pre>');
+														$('#code > pre:last').text(this.data).html(prettyPrintOne($('#code > pre:last').html()));
+														// .prettyPrintOne() allows you to pass in a string to be prettified. 
+													}
+												
 												});
 											});
 										}
