@@ -882,3 +882,9 @@ Processing GithubController#home (for 127.0.0.1 at 2010-05-26 03:05:12) [GET]
 Rendering template within layouts/application
 Rendering github/home
 Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-05-26 03:11:37) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
