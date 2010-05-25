@@ -7,6 +7,18 @@ var jQT = new $.jQTouch({
 	]
 });
 
+// Return the key's of an object
+// Useage:
+// var obj = {a: 1, b: 2, c: 3, d: 4, kitty: 'cat'}
+// alert($.keys(obj));    // a,b,c,d,kitty
+$.extend({
+	keys: function(obj){
+		var a = [];
+		$.each(obj, function(k){ a.push(k) });
+		return a;
+	}
+})
+
 // Some sample Javascript functions:
 $(function(){
 	$('a[target="_blank"]').click(function() {
@@ -33,73 +45,191 @@ $(function(){
 		}
 	});
 
-
-
 	// GitHub API wrapper. http://develop.github.com/
-	function GitHubAPI(){}
+	function GitHub(){}
 
-	GitHubAPI.Repos = function Repos(){}
-	GitHubAPI.Repos.ShowUser = function ShowUser(){}
-	GitHubAPI.Repos.ShowUserRepo = function ShowUserRepo(){}
-	GitHubAPI.Repos.ShowUserRepo = function ShowUserRepoBranches(){}
-	
-	GitHubAPI.Commits = function Commits(){}
-	GitHubAPI.Commits.ListUserRepoBranch = function ListUserRepoBranch(){}
-	
 	// http://develop.github.com/p/repo.html
-	GitHubAPI.Repos.ShowUser = function(user, callback){
+	GitHub.RepositoryAPI = function RepositoryAPI(){}
+	GitHub.RepositoryAPI.ShowUser = function ShowUser(){}
+	GitHub.RepositoryAPI.ShowUserRepo = function ShowUserRepo(){}
+	GitHub.RepositoryAPI.ShowUserRepoBranches = function ShowUserRepoBranches(){}
+	
+	GitHub.RepositoryAPI.ShowUser = function(user, callback){
 		requestURL = "http://github.com/api/v2/json/repos/show/" + user + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
 			callback(json.repositories.reverse(), status);
 		});
 	}
 
-	// http://develop.github.com/p/repo.html
-	GitHubAPI.Repos.ShowUserRepo = function(user, repo, callback){
+	GitHub.RepositoryAPI.ShowUserRepo = function(user, repo, callback){
 		requestURL = "http://github.com/api/v2/json/repos/show/" + user + "/" + repo + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
-			callback(json.repository, status);
+			callback(json, status);
 		});
 	}
 	
-	// http://develop.github.com/p/repo.html
-	GitHubAPI.Repos.ShowUserRepoBranches = function(user, repo, callback){
+	GitHub.RepositoryAPI.ShowUserRepoBranches = function(user, repo, callback){
 		requestURL = "http://github.com/api/v2/json/repos/show/" + user + "/" + repo + "/branches?callback=?";
 		$.getJSON(requestURL, function(json, status){
 			callback(json, status);
 		});
 	}
 	
-	http://develop.github.com/p/commits.html
-	GitHubAPI.Commits.ListUserRepoBranch = function(user, repo, branch, callback){
+	// http://develop.github.com/p/commits.html
+	GitHub.CommitsAPI = function CommitsAPI(){}
+	GitHub.CommitsAPI.ListUserRepoBranch = function ListUserRepoBranch(){}
+	GitHub.CommitsAPI.ShowUserRepoSha = function ShowUserRepoSha(){}
+	
+	GitHub.CommitsAPI.ListUserRepoBranch = function(user, repo, branch, callback){
 		requestURL = "http://github.com/api/v2/json/commits/list/" + user + "/" + repo + "/" + branch + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
 			callback(json.commits, status);
 		});
 	}
+	
+	GitHub.CommitsAPI.ShowUserRepoSha = function(user, repo, sha, callback){
+		requestURL = "http://github.com/api/v2/json/commits/show/" + user + "/" + repo + "/" + sha + "?callback=?";
+		$.getJSON(requestURL, function(json, status){
+			callback(json, status);
+		});
+	}
+	
+	// http://develop.github.com/p/object.html
+	GitHub.ObjectAPI = function ObjectAPI(){}
+	GitHub.ObjectAPI.TreeShowUserRepoSha = function TreeShowUserRepoSha(){}
 
+	GitHub.ObjectAPI.TreeShowUserRepoSha = function(user, repo, sha, callback){
+		requestURL = "http://github.com/api/v2/json/tree/show/" + user + "/" + repo + "/" + sha + "?callback=?";
+		$.getJSON(requestURL, function(json, status){
+			callback(json.tree, status);
+		});
+	}
 
 	// TESTING
-	GitHubAPI.Repos.ShowUser("chrisjacob", function(json, status){
-		$.each(json, function(i){
-			console.log(this);
-		});
-	});
+	var fullstack = true;
 	
-	GitHubAPI.Repos.ShowUserRepo("chrisjacob", "igithub", function(json, status){
-		console.log(json);
-	});
+	if(fullstack)
+	{
+		// FULL STACK
+		var user = "chrisjacob";
+		var repo = "";
+		var branches = [];
+		var branch = "";
+		var commit_sha = "";
+		var root_tree_sha = "";
+		var tree_sha = "";
 	
-	GitHubAPI.Repos.ShowUserRepoBranches("chrisjacob", "igithub", function(json, status){
-		$.each(json, function(i){
-			console.log(this);
+		GitHub.RepositoryAPI.ShowUser(user, function(json, status){
+			console.log('FULL STACK Repository.ShowUser');
+			$.each(json, function(i){
+				console.log(this);
+				console.log($.keys(this));
+				
+				repo = this.name;
+			
+				GitHub.RepositoryAPI.ShowUserRepoBranches(user, repo, function(json, status){
+					console.log('FULL STACK Repository.ShowUserRepoBranches');
+					$.each(json, function(i){
+						console.log(this);
+						console.log($.keys(this));
+						
+						branches = $.keys(this);
+						branch = branches[0];
+						console.log(branch);
+						
+						commit_sha = this[branch]
+						console.log(commit_sha);
+						
+						GitHub.CommitsAPI.ShowUserRepoSha(user, repo, commit_sha, function(json, status){
+							console.log('FULL STACK Commits.ShowUserRepoSha');
+							$.each(json, function(i){
+								console.log(this);
+								console.log($.keys(this));
+								
+								root_tree_sha = this.tree;
+								console.log(root_tree_sha);
+								
+								GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, root_tree_sha, function(json, status){
+									console.log('FULL STACK ObjectAPI.TreeShowUserRepoSha ROOT');
+									$.each(json, function(i){
+										console.log(this);
+										console.log($.keys(this));
+										
+										if(this.type == 'tree')
+										{
+											tree_sha = this.sha;
+											var tree_name = this.name;
+											
+											GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, tree_sha, function(json, status){
+												console.log('FULL STACK ObjectAPI.TreeShowUserRepoSha ' + tree_name);
+												$.each(json, function(i){
+													console.log(this);
+													console.log($.keys(this));
+
+												});
+											});
+										}
+										
+									});
+								});
+								
+								return false; // exit the loop after first iteration
+							});
+						});
+						
+						return false; // exit the loop after first iteration
+					});
+				});
+			
+				return false; // exit the loop after first iteration
+			});
 		});
-	});
+	}
+	else
+	{
+		// REPO
+		GitHub.RepositoryAPI.ShowUser("chrisjacob", function(json, status){
+			console.log('Repository.ShowUser');
+			$.each(json, function(i){
+				console.log(this);
+			});
+		});
 	
-	GitHubAPI.Commits.ListUserRepoBranch("chrisjacob", "igithub", "master", function(json, status){
-		$.each(json, function(i){
-			console.log(this);
+		GitHub.RepositoryAPI.ShowUserRepo("chrisjacob", "igithub", function(json, status){
+			console.log('Repository.ShowUserRepo');
+			$.each(json, function(i){
+				console.log(this);
+			});
 		});
-	});
-    
+	
+		GitHub.RepositoryAPI.ShowUserRepoBranches("chrisjacob", "igithub", function(json, status){
+			console.log('Repository.ShowUserRepoBranches');
+			$.each(json, function(i){
+				console.log(this);
+			});
+		});
+	
+		// COMMITS
+		GitHub.CommitsAPI.ListUserRepoBranch("chrisjacob", "igithub", "master", function(json, status){
+			console.log('Commits.ListUserRepoBranch');
+			$.each(json, function(i){
+				console.log(this);
+			});
+		});
+	
+		GitHub.CommitsAPI.ShowUserRepoSha("chrisjacob", "igithub", "7df8cd7d183cf86944be1c2360155b6bdbf12883", function(json, status){
+			console.log('Commits.ShowUserRepoSha');
+			$.each(json, function(i){
+				console.log(this);
+			});
+		});
+		
+		// OBJECT
+		GitHub.ObjectAPI.TreeShowUserRepoSha("chrisjacob", "igithub", "dc8c12208b7b22c1ba9b8313a2b2d21219a1bcfb", function(json, status){
+			console.log('ObjectAPI.TreeShowUserRepoSha');
+			$.each(json, function(i){
+				console.log(this);
+			});
+		});
+	} 
 });
