@@ -45,6 +45,53 @@ $(function(){
 		}
 	});
 
+	
+	function string2charCodeString (s){
+		var i, f = 0, a = [];
+
+		s += '';
+		f = s.length;
+
+		for (i = 0; i<f; i++) {
+			a[i] = s.charCodeAt(i);
+		}
+
+		return a.join('_');
+	}
+	
+	function charCodeString2string (s){
+		var i, f = 0, a = [], s2 = '';
+
+		s += '';
+		a = s.split('_');
+		
+		f = a.length;
+
+		for (i = 0; i<f; i++) {
+			s2 += String.fromCharCode(parseInt(a[i]));
+		}
+
+		return s2;
+	}
+	
+	var test1 = "ABC";
+	var test2 = "http://github.com/rails/rails/tree/master/actionmailer/";
+	var test3 = "http://github.com/rails/rails/blob/master/actionmailer/install.rb";
+	
+	var chars1 = string2charCodeString(test1);
+	var chars2 = string2charCodeString(test2);
+	var chars3 = string2charCodeString(test3);	
+	
+	var strings1 = charCodeString2string(chars1);
+	var strings2 = charCodeString2string(chars2);
+	var strings3 = charCodeString2string(chars3);
+	
+	console.log(test1, test2, test3);
+	console.log(chars1,chars2,chars3);
+	console.log(strings1,strings2,strings3);
+	
+	
+
 	// GitHub API wrapper. http://develop.github.com/
 	function GitHub(){}
 
@@ -53,14 +100,27 @@ $(function(){
 	GitHub.RepositoryAPI.ShowUser = function ShowUser(){}
 	GitHub.RepositoryAPI.ShowUserRepo = function ShowUserRepo(){}
 	GitHub.RepositoryAPI.ShowUserRepoBranches = function ShowUserRepoBranches(){}
+	GitHub.RepositoryAPI.ShowUserRepoTags = function ShowUserRepoTags(){}
 	
+	// List All Repositories for a user
+	// Return: repositories
 	GitHub.RepositoryAPI.ShowUser = function(user, callback){
 		requestURL = "http://github.com/api/v2/json/repos/show/" + user + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
 			callback(json.repositories.reverse(), status);
 		});
 	}
+	
+// TODO Watched Repos
+// To see which repositories a user is watching, you can call:
+// /repos/watched/:user
 
+// TODO Following Network
+// If you want to look at the following network on GitHub, you can request the users that a specific user is following with:
+// /user/show/:user/following
+
+	// Show Repository Info - more in-depth information for a repository
+	// Return: repository
 	GitHub.RepositoryAPI.ShowUserRepo = function(user, repo, callback){
 		requestURL = "http://github.com/api/v2/json/repos/show/" + user + "/" + repo + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
@@ -68,6 +128,8 @@ $(function(){
 		});
 	}
 	
+	// List Repository Branches
+	// Return: branches 
 	GitHub.RepositoryAPI.ShowUserRepoBranches = function(user, repo, callback){
 		requestURL = "http://github.com/api/v2/json/repos/show/" + user + "/" + repo + "/branches?callback=?";
 		$.getJSON(requestURL, function(json, status){
@@ -75,11 +137,24 @@ $(function(){
 		});
 	}
 	
+// TODO need test case
+	// List Repository Tags
+	// Return: tags
+	GitHub.RepositoryAPI.ShowUserRepoTags = function(user, repo, callback){
+		requestURL = "http://github.com/api/v2/json/repos/show/" + user + "/" + repo + "/tags?callback=?";
+		$.getJSON(requestURL, function(json, status){
+			callback(json, status);
+		});
+	}
+	
+	
 	// http://develop.github.com/p/commits.html
 	GitHub.CommitsAPI = function CommitsAPI(){}
 	GitHub.CommitsAPI.ListUserRepoBranch = function ListUserRepoBranch(){}
 	GitHub.CommitsAPI.ShowUserRepoSha = function ShowUserRepoSha(){}
 	
+	// List Commits on a Branch
+	// Return: commits
 	GitHub.CommitsAPI.ListUserRepoBranch = function(user, repo, branch, callback){
 		requestURL = "http://github.com/api/v2/json/commits/list/" + user + "/" + repo + "/" + branch + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
@@ -87,6 +162,8 @@ $(function(){
 		});
 	}
 	
+	// Show a Specific Commit
+	// Returns: commit
 	GitHub.CommitsAPI.ShowUserRepoSha = function(user, repo, sha, callback){
 		requestURL = "http://github.com/api/v2/json/commits/show/" + user + "/" + repo + "/" + sha + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
@@ -94,11 +171,14 @@ $(function(){
 		});
 	}
 	
+	
 	// http://develop.github.com/p/object.html
 	GitHub.ObjectAPI = function ObjectAPI(){}
 	GitHub.ObjectAPI.TreeShowUserRepoSha = function TreeShowUserRepoSha(){}
 	GitHub.ObjectAPI.BlobShowUserRepoShaPath = function BlobShowUserRepoShaPath(){}
 	
+	// Show Tree Content for the tree SHA provided 
+	// Return: tree
 	GitHub.ObjectAPI.TreeShowUserRepoSha = function(user, repo, sha, callback){
 		requestURL = "http://github.com/api/v2/json/tree/show/" + user + "/" + repo + "/" + sha + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
@@ -106,6 +186,8 @@ $(function(){
 		});
 	}
 	
+	// Show Blob Data for the tree SHA and path provided
+	// Return: blob
 	GitHub.ObjectAPI.BlobShowUserRepoShaPath = function(user, repo, sha, path, callback){
 		requestURL = "http://github.com/api/v2/json/blob/show/" + user + "/" + repo + "/" + sha + "/" + path + "?callback=?";
 		$.getJSON(requestURL, function(json, status){
@@ -119,7 +201,8 @@ $(function(){
 	if(fullstack)
 	{
 		// FULL STACK
-		var user = "chrisjacob";
+		// var user = "chrisjacob";
+		var user = 'rails';
 		var repo = "";
 		var branches = [];
 		var branch = "";
@@ -134,7 +217,8 @@ $(function(){
 				console.log($.keys(this));
 				
 				// repo = this.name;
-				repo = 'chrisjacob.github.com';
+				// repo = 'chrisjacob.github.com';
+				repo = 'rails';
 			
 				GitHub.RepositoryAPI.ShowUserRepoBranches(user, repo, function(json, status){
 					console.log('FULL STACK Repository.ShowUserRepoBranches');
@@ -188,14 +272,19 @@ $(function(){
 													console.log(this);
 													// console.log($.keys(this));
 
-													if(this.mime_type == 'text/plain')
+													var mime_match = /text\//i
+													if(!mime_match.test(this.mime_type))
 													{
-														$('#code').append('<p>'+ object_name +'</p><pre></pre>');
-														$('#code > pre:last').text(this.data);
-														// .text() calls the DOM method .createTextNode(), which replaces special characters with their HTML entity equivalents (such as &lt;  for <).
+														// we don't yet support non-text files such as binary files
 													}
 													else
 													{
+														// plain text
+														//$('#code').append('<p>'+ object_name +'</p><pre></pre>');
+														//$('#code > pre:last').text(this.data);
+														//// .text() calls the DOM method .createTextNode(), which replaces special characters with their HTML entity equivalents (such as &lt;  for <).
+
+														// styled text
 														$('#code').append('<p>'+ object_name +'</p><pre class="prettyprint"></pre>');
 														$('#code > pre:last').text(this.data).html(prettyPrintOne($('#code > pre:last').html()));
 														// .prettyPrintOne() allows you to pass in a string to be prettified. 
