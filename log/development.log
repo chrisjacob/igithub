@@ -1174,3 +1174,531 @@ Processing GithubController#home (for 127.0.0.1 at 2010-05-28 23:46:15) [GET]
 Rendering template within layouts/application
 Rendering github/home
 Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 22:35:22) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 78ms (View: 73, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 22:37:44) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 22:41:02) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 17ms (View: 14, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 22:44:49) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 75ms (View: 72, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 22:45:33) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 22:48:39) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 17ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 22:49:28) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:01:35) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:02:48) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:06:19) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:06:46) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:07:33) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:09:13) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:10:06) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:28:35) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:42:35) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-01 23:44:13) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:00:49) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:03:35) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:04:43) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:08:32) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:10:12) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:10:13) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 9ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:29:55) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:31:49) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 58ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:32:32) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:37:28) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:37:51) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:39:07) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:42:07) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 59ms (View: 55, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:44:16) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:45:05) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:46:08) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:47:15) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:47:16) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 18ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:47:36) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:48:56) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:49:30) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:49:48) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:50:10) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:50:10) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:51:27) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:51:45) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:54:12) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:54:54) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 00:55:37) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 58ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 01:53:46) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 01:54:59) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 01:57:14) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 01:58:25) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 01:59:19) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:00:06) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:01:09) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:04:36) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:05:05) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:06:28) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:07:14) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:08:31) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:10:08) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:12:40) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:13:55) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:22:02) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:23:30) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:24:47) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:26:14) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:28:25) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:30:44) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:31:26) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:35:30) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 02:44:47) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:01:00) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:05:54) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:07:27) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:07:47) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:08:08) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:09:46) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:10:13) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:10:41) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:15:58) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:16:15) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:17:12) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:20:07) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 59ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:22:44) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:27:52) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:30:29) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:30:50) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:31:03) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GithubController#home (for 127.0.0.1 at 2010-06-02 03:31:03) [GET]
+Rendering template within layouts/application
+Rendering github/home
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
