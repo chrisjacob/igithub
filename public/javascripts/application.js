@@ -1,5 +1,5 @@
 var jQT = new $.jQTouch({
-	icon: 'images/jqtouch.png',
+	icon: 'images/igithub.png',
 	addGlossToIcon: false,
 	startupScreen: 'images/jqt_startup.png',
 	preloadImages: [
@@ -15,16 +15,17 @@ var jQT = new $.jQTouch({
 });
 
 $(function(){
-
-	$('#tapme').tap(function(){
-		$(this).parent().after('<li>tapped!</li>')
+	
+	$('#formHomeSubmit').tap(function(e){
+		alert($('#formHomeUsername').val());
+		e.preventDefault();
 	})
 	
 	$('a[target="_blank"]').click(function() {
 		if (confirm('This link opens in a new window.')) {
 			return true;
 		} else {
-		return false;
+			return false;
 		}
 	});
 	
@@ -53,7 +54,7 @@ $(function(){
 
 
 	// API TESTING
-	var runtests = true;
+	var runtests = false;
 	var fullstack = true;
 	
 	if(runtests)

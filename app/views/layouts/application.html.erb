@@ -27,20 +27,40 @@
 			#jqt.fullscreen #home .info {
 				display: none;
 			}
-			div#jqt #about {
+			div#jqt #more .content {
 				padding: 100px 10px 40px;
 				text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;
 				font-size: 13px;
 				text-align: center;
-				background: #161618;
+				color: #000;
 			}
-			div#jqt #about p {
+			div#jqt #more .content p {
 				margin-bottom: 8px;
 			}
-			div#jqt #about a {
-				color: #fff;
+			div#jqt #more .content a {
+				color: #000;
 				font-weight: bold;
 				text-decoration: none;
+			}
+			#jqt .actionButton {
+			 -webkit-border-image: url(/jqtouch/themes/apple/img/actionButton.png) 0 5 0 5;
+			 border-width: 0 5px;
+			}
+			#jqt > * {
+				background: rgb(240,240,240) none;
+			}
+			#jqt h1, #jqt h2 {
+				text-shadow: rgba(255,255,255,.2) 0 1px 1px;
+				color: rgb(100, 100, 100);
+			}
+			
+			#jqt ul li a.basicButton{
+				text-align:center;
+				color: #6D84A2;
+			}
+			#jqt #home ul.individual li {
+				width:auto;
+				float:none;
 			}
 		</style>
 		
@@ -51,41 +71,33 @@
 			
 			<div id="home" class="current">
 				<div class="toolbar">
-					<h1>jQTouch</h1>
-					<a class="button slideup" id="infoButton" href="#about">About</a>
+					<h1>iGitHub</h1>
+					<a class="button slideup" href="#more">More</a>
 				</div>
-				<ul class="rounded">
-					<li class="arrow"><a href="#ui">User Interface</a> <small class="counter">4</small></li>
-					<li class="arrow"><a href="#animations">Animations</a> <small class="counter">8</small></li>
-					<li class="arrow"><a href="#ajax">AJAX</a> <small class="counter">3</small></li>
-					<li class="arrow"><a href="#callbacks">Events</a> <small class="counter">3</small></li>
-					<li class="arrow"><a href="#extensions">Extensions</a> <small class="counter">4</small></li>
-					<li class="arrow"><a href="#video">Video</a></li>
-					<li class="arrow"><a href="#demos">Demos</a> <small class="counter">2</small></li>
-				</ul>
-				<h2>External Links</h2>
-				<ul class="rounded">
-					<li class="forward"><a href="http://www.jqtouch.com/" target="_blank">Homepage</a></li>
-					<li class="forward"><a href="http://www.twitter.com/jqtouch" target="_blank">Twitter</a></li>
-					<li class="forward"><a href="http://code.google.com/p/jqtouch/w/list" target="_blank">Google Code</a></li>
-				</ul>
+        <form>
+					<ul class="edit rounded">
+						<li><input type="text" name="username" placeholder="GitHub Username" id="formHomeUsername" /></li>
+					</ul>
 				<ul class="individual">
-					<li><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#100;&#107;&#064;&#109;&#111;&#114;&#102;&#117;&#110;&#107;&#046;&#099;&#111;&#109;">Email</a></li>
-					<li><a href="http://tinyurl.com/support-jqt" target="_blank">Donate</a></li>
+					<li><a id="formHomeSubmit" class="basicButton" href="#">GO!</a></li>
 				</ul>
+        </form>
 				<div class="info">
 					<p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
 				</div>
-				<div id="code">
-				</div>
 			</div>
 			
-			<div id="about" class="selectable">
-				<p><img src="/images/jqtouch.png" /></p>
-				<p><strong>jQTouch</strong><br />Version 1.0 beta<br /><a href="http://www.davidkaneda.com">By David Kaneda</a></p>
-				<p><em>Create powerful mobile apps with<br /> just HTML, CSS, and jQuery.</em></p>
-				<p><a href="http://twitter.com/jqtouch" target="_blank">@jQTouch on Twitter</a></p>
-				<p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+			<div id="more">
+				<div class="toolbar">
+					<h1>More</h1>
+					<a class="button actionButton goback" href="#">Done</a>
+				</div>
+				<div class="content">
+					<p><img src="/images/igithub.png" /></p>
+					<p><strong>iGitHub</strong><br />Version 0.1 beta<br /><a href="http://chrisjacob.github.com/">By Chris Jacob</a></p>
+					<p><em>GitHub Source Code Browser<br /> on your iPhone.</em></p>
+					<p><a href="http://twitter.com/i_chris_jacob" target="_blank">@i_chris_jacob on Twitter</a></p>
+				</div>
 			</div>
 
 		</div>
