@@ -1,143 +1,94 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>iGitHub &beta;</title>
-				<%= stylesheet_link_tag '/jqtouch/jqtouch/jqtouch.min.css' %>
-				<%= stylesheet_link_tag '/jqtouch/themes/apple/theme.min.css' %>
-				<%= stylesheet_link_tag '/prettify/src-min/prettify.css' %>
-				<%= stylesheet_link_tag 'application.css' %>
-				<%= javascript_include_tag '/jqtouch/jqtouch/jquery.1.3.2.min.js', :cache => false %>
-				<%= javascript_include_tag '/jqtouch/jqtouch/jqtouch.min.js', :cache => false %>
-				<%= javascript_include_tag '/jqtouch/extensions/jqt.autotitles.js', :cache => false %>
-				<%= javascript_include_tag '/prettify/src-min/prettify.js', :cache => false %>
-				<%= javascript_include_tag 'helpers.js', :cache => false %>
-				<%= javascript_include_tag 'github.js', :cache => false %>
-				<%= javascript_include_tag 'application.js', :cache => false %>
-        <script type="text/javascript" charset="utf-8">
+	<head>
+		<meta charset="UTF-8" />
+		<title>iGitHub &beta;</title>
+		
+		<%= stylesheet_link_tag '/jqtouch/jqtouch/jqtouch.css' %>
+		<%= stylesheet_link_tag '/jqtouch/themes/apple/theme.css' %>
+		<%= stylesheet_link_tag '/prettify/src-min/prettify.css' %>
+		<%= stylesheet_link_tag 'application.css' %>
+		<%= javascript_include_tag '/jqtouch/jqtouch/jquery-1.4.2.min.js', :cache => false %>
+		<%= javascript_include_tag '/jqtouch/jqtouch/jqtouch.js', :cache => false %>
+		<%= javascript_include_tag '/jqtouch/extensions/jqt.autotitles.js', :cache => false %>
+		<%= javascript_include_tag '/prettify/src-min/prettify.js', :cache => false %>
+		<%= javascript_include_tag 'helpers.js', :cache => false %>
+		<%= javascript_include_tag 'github.js', :cache => false %>
+		<%= javascript_include_tag 'application.js', :cache => false %>
+		
+		<script type="text/javascript" charset="utf-8">
+			
+			$(function(){
+				// Custom Javascript (onReady)
+			});
+		</script>
+		
+		<style type="text/css" media="screen">
+			#jqt.fullscreen #home .info {
+				display: none;
+			}
+			div#jqt #about {
+				padding: 100px 10px 40px;
+				text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;
+				font-size: 13px;
+				text-align: center;
+				background: #161618;
+			}
+			div#jqt #about p {
+				margin-bottom: 8px;
+			}
+			div#jqt #about a {
+				color: #fff;
+				font-weight: bold;
+				text-decoration: none;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="jqt">
+			
+			<div id="home" class="current">
+				<div class="toolbar">
+					<h1>jQTouch</h1>
+					<a class="button slideup" id="infoButton" href="#about">About</a>
+				</div>
+				<ul class="rounded">
+					<li class="arrow"><a href="#ui">User Interface</a> <small class="counter">4</small></li>
+					<li class="arrow"><a href="#animations">Animations</a> <small class="counter">8</small></li>
+					<li class="arrow"><a href="#ajax">AJAX</a> <small class="counter">3</small></li>
+					<li class="arrow"><a href="#callbacks">Events</a> <small class="counter">3</small></li>
+					<li class="arrow"><a href="#extensions">Extensions</a> <small class="counter">4</small></li>
+					<li class="arrow"><a href="#video">Video</a></li>
+					<li class="arrow"><a href="#demos">Demos</a> <small class="counter">2</small></li>
+				</ul>
+				<h2>External Links</h2>
+				<ul class="rounded">
+					<li class="forward"><a href="http://www.jqtouch.com/" target="_blank">Homepage</a></li>
+					<li class="forward"><a href="http://www.twitter.com/jqtouch" target="_blank">Twitter</a></li>
+					<li class="forward"><a href="http://code.google.com/p/jqtouch/w/list" target="_blank">Google Code</a></li>
+				</ul>
+				<ul class="individual">
+					<li><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#100;&#107;&#064;&#109;&#111;&#114;&#102;&#117;&#110;&#107;&#046;&#099;&#111;&#109;">Email</a></li>
+					<li><a href="http://tinyurl.com/support-jqt" target="_blank">Donate</a></li>
+				</ul>
+				<div class="info">
+					<p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
+				</div>
+				<div id="code">
+				</div>
+			</div>
+			
+			<div id="about" class="selectable">
+				<p><img src="/images/jqtouch.png" /></p>
+				<p><strong>jQTouch</strong><br />Version 1.0 beta<br /><a href="http://www.davidkaneda.com">By David Kaneda</a></p>
+				<p><em>Create powerful mobile apps with<br /> just HTML, CSS, and jQuery.</em></p>
+				<p><a href="http://twitter.com/jqtouch" target="_blank">@jQTouch on Twitter</a></p>
+				<p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+			</div>
 
-        </script>
-        <style type="text/css" media="screen">
-
-        </style>
-    </head>
-    <body>
-        <div id="home" class="current">
-            <div class="toolbar">
-                <h1>iGitHub</h1>
-                <a class="button slideup in" href="#more">More</a>
-            </div>
-            <ul class="rounded">
-                <li class="arrow"><a href="#folder-a">Folder A</a></li>
-                <li class="arrow"><a href="#folder-b">Folder B</a></li>
-                <li class="arrow"><a href="#folder-c">Folder C</a></li>
-            </ul>
-            <h2>Test Links</h2>
-            <ul class="rounded">
-                <li class="arrow"><a href="#ajax">AJAX</a> <small class="counter">2</small></li>
-            </ul>
-            <h2>External Links</h2>
-            <ul class="rounded">
-                <li class="forward"><a href="http://www.jqtouch.com/" target="_blank">Homepage</a></li>
-                <li class="forward"><a href="http://www.github.com/" target="_blank">GitHub</a></li>
-                <li class="forward"><a href="http://www.develop.github.com/" target="_blank">GitHub API</a></li>
-            </ul>
-						<ul class="individual">
-							<li id="orient">Orientation: <strong>profile</strong></li>
-						</ul>
-            <div class="info">
-                <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
-            </div>
-            <div id="code"></div>
-        </div>
-
-        <div id="more">
-            <div class="toolbar">
-                <h1></h1>
-                <a class="button blueButton slideup out reverse" href="#home">Done</a>
-            </div>
-            <div class="info">
-                <p>Dead end.</p>
-            </div>
-        </div>
-
-				<!-- DEMO PAGES-->
-        <div id="folder-a">
-            <div class="toolbar">
-                <h1></h1>
-                <a class="back" href="#">Back</a>
-            </div>
-            <ul class="rounded">
-                <li class="arrow"><a href="#folder-a-folder-1">Folder 1</a></li>
-            </ul>
-            <ul class="rounded">
-                <li><a href="#folder-a-file-raw">File-RAW_with-realy-long-name.rb</a></li>
-            </ul>
-        </div>
-	        <div id="folder-a-folder-1">
-	            <div class="toolbar">
-	                <h1></h1>
-	                <a class="back" href="#">Back</a>
-	            </div>
-	            <div class="info">
-	                <p>Dead end.</p>
-	            </div>
-	        </div>
-	        <div id="folder-a-file-raw" class="blob bg_white">
-	            <div class="toolbar">
-	                <h1></h1>
-	                <a class="back" href="#">Back</a>
-	            </div>
-	            <div class="code">
-								<pre>
-&lt;div id=&quot;folder-a/folder-1/folder-x&quot;&gt;
-    &lt;div class=&quot;toolbar&quot;&gt;
-        &lt;h1&gt;&lt;/h1&gt;
-        &lt;a class=&quot;back&quot; href=&quot;#&quot;&gt;..&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;ul class=&quot;rounded&quot;&gt;
-        &lt;li class=&quot;arrow&quot;&gt;&lt;a href=&quot;#folder-a/folder-1/folder-x/file-raw&quot;&gt;File Raw&lt;/a&gt;&lt;/li&gt;
-        &lt;li class=&quot;arrow&quot;&gt;&lt;a href=&quot;#folder-a/folder-1/folder-x/file-sexy&quot;&gt;File Sexy&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;
-								</pre>
-							</div>
-	        </div>
-        <div id="folder-b">
-            <div class="toolbar">
-                <h1></h1>
-                <a class="back" href="#">Back</a>
-            </div>
-            <div class="info">
-                <p>Dead end.</p>
-            </div>
-        </div>
-        <div id="folder-c">
-            <div class="toolbar">
-                <h1></h1>
-                <a class="back" href="#">Back</a>
-            </div>
-            <div class="info">
-                <p>Dead end.</p>
-            </div>
-        </div>
-
-				<!-- TEST LINKS -->
-        <div id="ajax">
-            <div class="toolbar">
-                <h1>AJAX</h1>
-                <a class="back" href="#home">Home</a>
-            </div>
-            <ul class="rounded">
-                <li class="arrow"><a href="/jqtouch/demos/igithub/ajax.html">GET Example</a></li>
-                <li class="arrow"><a href="#callback">With Callback</a></li>
-            </ul>
-        </div>
-        <div id="callback">
-            <div class="toolbar">
-                <h1>AJAX w/Callback</h1>
-                <a class="back" href="#">Ajax</a>
-            </div>
-        </div>
-    </body>
+		</div>
+	</body>
+	
 </html>
