@@ -15,11 +15,79 @@ var jQT = new $.jQTouch({
 });
 
 $(function(){
-	
+
 	$('#formHomeSubmit').tap(function(e){
-		alert($('#formHomeUsername').val());
 		e.preventDefault();
+		username = $('#formHomeUsername').val();
+		if(username == '')
+		{
+			alert('Please enter a GitHub username');
+			return false;
+		}
+		
+		pageId = idEncode(username + '/');
+
+		if($('#' + pageId).length < 1)
+		{
+			userClone = $('#templateUser').clone(true);
+			userClone.appendTo('#jqt').attr('id',pageId)
+			userClone.find('h1').text(username);
+			
+			GitHub.RepositoryAPI.ShowUser(username, function(json, status){
+				userCloneList = $('<ul class="rounded"></ul>');
+				userClone.append(userCloneList);
+				userClone.find('.loadingPage').remove();
+				$.each(json, function(i){
+					userCloneHref = idEncode(this.name);
+					userCloneListItem = $('<li class="arrow"></li>');
+					userCloneListItemAnchor = $('<a href="#'+userCloneHref+'">'+this.name+'</a>');
+					
+					userCloneListItem.append(userCloneListItemAnchor);
+					userCloneList.append(userCloneListItem);
+					
+					console.log(i);
+					console.log(userCloneListItemAnchor);
+
+					userCloneListItemAnchor.bind('click', function(e){
+						if($('#' + userCloneHref).length < 1)
+						{
+							repoClone = $('#templateRepo').clone(true);
+							repoClone.appendTo('#jqt').attr('id',userCloneHref)
+							repoClone.find('h1').text(this.name);
+						}
+
+					});
+				});
+			});
+		}
+
+		jQT.goTo('#' + pageId, 'slide', $(this).hasClass('reverse'));
 	})
+	
+	$('#templateUser').bind('pageAnimationEnd', function(e, info){
+		if (!$(this).data('loaded')) {
+			// console.log('load it!');
+			$(this).append($('<div class="loadingPage">Loading</div>'));
+			$(this).data('loaded', true);  
+		}
+		else
+		{
+			// console.log('already loaded');
+		}
+	});
+	
+	$('#templateRepo').bind('pageAnimationEnd', function(e, info){
+		if (!$(this).data('loaded')) {
+			// console.log('load it!');
+			$(this).append($('<div class="loadingPage">Loading</div>'));
+			$(this).data('loaded', true);  
+		}
+		else
+		{
+			// console.log('already loaded');
+		}
+	});
+	
 	
 	$('a[target="_blank"]').click(function() {
 		if (confirm('This link opens in a new window.')) {
