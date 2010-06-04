@@ -630,7 +630,6 @@
             }
         }
         $.fn.tap = function(fn) {
-	console.log(fn);
             if ($.isFunction(fn)) {
                 var tapEvent = (jQTSettings.useFastTouch && $.support.touch) ? 'tap' : 'click';
                 return $(this).live(tapEvent, fn);

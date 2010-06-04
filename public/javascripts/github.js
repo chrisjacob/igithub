@@ -2,6 +2,7 @@
 	function GitHub(){}
 
 	// http://develop.github.com/p/repo.html
+	GitHub.DataCache = {};
 	GitHub.RepositoryAPI = function RepositoryAPI(){}
 	GitHub.RepositoryAPI.ShowUser = function ShowUser(){}
 	GitHub.RepositoryAPI.ShowUserRepo = function ShowUserRepo(){}

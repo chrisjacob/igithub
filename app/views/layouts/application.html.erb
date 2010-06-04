@@ -8,7 +8,7 @@
 		<%= stylesheet_link_tag '/jqtouch/themes/apple/theme.css' %>
 		<%= stylesheet_link_tag '/prettify/src-min/prettify.css' %>
 		<%= stylesheet_link_tag 'application.css' %>
-		<%= javascript_include_tag '/jqtouch/jqtouch/jquery-1.4.2.min.js', :cache => false %>
+		<%= javascript_include_tag '/jqtouch/jqtouch/jquery-1.4.2.js', :cache => false %>
 		<%= javascript_include_tag '/jqtouch/jqtouch/jqtouch.js', :cache => false %>
 		<%= javascript_include_tag '/jqtouch/extensions/jqt.autotitles.js', :cache => false %>
 		<%= javascript_include_tag '/prettify/src-min/prettify.js', :cache => false %>
@@ -76,7 +76,7 @@
 				</div>
         <form>
 					<ul class="edit rounded">
-						<li><input type="text" name="username" placeholder="GitHub Username" id="formHomeUsername" /></li>
+						<li><input type="text" name="username" placeholder="GitHub Username" id="formHomeUsername" value="chrisjacob" /></li>
 					</ul>
 				<ul class="individual">
 					<li><a id="formHomeSubmit" class="basicButton" href="#">GO!</a></li>
@@ -105,6 +105,7 @@
 					<h1>User Name</h1>
 					<a class="button slideup" href="#more">More</a>
 				</div>
+				<div class="loadingPage">Loading</div>
 			</div>
 			
 			<div id="templateRepo">
@@ -112,6 +113,15 @@
 					<h1>Repo Name</h1>
 					<a class="button slideup" href="#more">More</a>
 				</div>
+				<div class="loadingPage">Loading</div>
+			</div>
+			
+			<div id="templateTree">
+				<div class="toolbar">
+					<h1>Tree Name</h1>
+					<a class="button slideup" href="#more">More</a>
+				</div>
+				<div class="loadingPage">Loading</div>
 			</div>
 
 		</div>

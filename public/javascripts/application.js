@@ -18,75 +18,160 @@ $(function(){
 
 	$('#formHomeSubmit').tap(function(e){
 		e.preventDefault();
-		username = $('#formHomeUsername').val();
-		if(username == '')
+		user = $('#formHomeUsername').val();
+		if(user == '')
 		{
 			alert('Please enter a GitHub username');
 			return false;
 		}
 		
-		pageId = idEncode(username + '/');
+		pageIdUser = idEncode(user);
+		
+		dict_user = GitHub.DataCache[user] = {};
+		dict_user['name'] = user;
+		dict_user['idEncode'] = pageIdUser;
+		dict_user['repos'] = {};
 
-		if($('#' + pageId).length < 1)
+		if($('#' + pageIdUser).length < 1)
 		{
 			userClone = $('#templateUser').clone(true);
-			userClone.appendTo('#jqt').attr('id',pageId)
-			userClone.find('h1').text(username);
+			userClone.appendTo('#jqt').attr('id',pageIdUser)
+			userClone.find('h1').text(user);
 			
-			GitHub.RepositoryAPI.ShowUser(username, function(json, status){
+			jQT.goTo('#' + pageIdUser, 'slide', $(this).hasClass('reverse'));
+			
+			GitHub.RepositoryAPI.ShowUser(user, function(json, status){
+				userClone.find('.loadingPage').remove();
 				userCloneList = $('<ul class="rounded"></ul>');
 				userClone.append(userCloneList);
-				userClone.find('.loadingPage').remove();
+				
+				dict_repos = {};
+				
 				$.each(json, function(i){
-					userCloneHref = idEncode(this.name);
-					userCloneListItem = $('<li class="arrow"></li>');
-					userCloneListItemAnchor = $('<a href="#'+userCloneHref+'">'+this.name+'</a>');
+					repo = this.name;
+					pageIdRepo = idEncode( user + '/' + repo );
 					
-					userCloneListItem.append(userCloneListItemAnchor);
+					dict_repos_repo = dict_repos[repo] = {};
+					dict_repos_repo['name'] = repo;
+					dict_repos_repo['idEncode'] = pageIdRepo;
+					dict_repos_repo['branches'] = {};
+					
+					userCloneListItem = $('<li class="arrow"><a href="#'+pageIdRepo+'">'+repo+'</a></li>');
 					userCloneList.append(userCloneListItem);
+				});
+				
+				dict_user['repos'] = dict_repos;
+				
+				userClone.find('ul li a').each(function(i){
 					
-					console.log(i);
-					console.log(userCloneListItemAnchor);
+					$(this).bind('click', function(e){
+						anchorHref = $(this).attr('href');
+						anchorText = $(this).text();
 
-					userCloneListItemAnchor.bind('click', function(e){
-						if($('#' + userCloneHref).length < 1)
+						if($(anchorHref).length < 1)
 						{
 							repoClone = $('#templateRepo').clone(true);
-							repoClone.appendTo('#jqt').attr('id',userCloneHref)
-							repoClone.find('h1').text(this.name);
-						}
+							repoClone.appendTo('#jqt').attr('id', anchorHref.slice(1));
+							repoClone.find('h1').text(anchorText);
+							
+							jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
+							
+							pathArray = idDecode(anchorHref.slice(1)).split('/');
+							user = pathArray[0];
+							repo = pathArray[1];
+							
+							GitHub.RepositoryAPI.ShowUserRepoBranches(user, repo, function(json, status){
+								repoClone.find('.loadingPage').remove();
+								repoCloneList = $('<ul class="rounded"></ul>');
+								repoClone.append(repoCloneList);
+								
+								dict_branches = {};
+								
+								$.each(json, function(i){
+									branches = this;
+									branchNames = $.keys(this);
 
+									$(branchNames).each(function(i){
+										branchName = String(this);
+										commitSha = branches[this];
+										
+										pageIdBranch = idEncode( user + '/' + repo + '/' + branchName );
+										
+										dict_branches_branch = dict_branches[branchName] = {};
+										dict_branches_branch['name'] = branchName;
+										dict_branches_branch['idEncode'] = pageIdBranch;
+										dict_branches_branch['commitSha'] = commitSha;
+										dict_branches_branch['trees'] = {};
+										
+										repoCloneListItem = $('<li class="arrow"><a href="#'+pageIdBranch+'">'+branchName+'</a></li>');
+										repoCloneList.append(repoCloneListItem);
+									});
+
+									GitHub.DataCache[user]['repos'][repo]['branches'] = dict_branches;
+
+									repoClone.find('ul li a').each(function(i){
+				
+										$(this).bind('click', function(e){
+											anchorHref = $(this).attr('href');
+											anchorText = $(this).text();
+
+											if($(anchorHref).length < 1)
+											{
+												treeClone = $('#templateTree').clone(true);
+												treeClone.appendTo('#jqt').attr('id', anchorHref.slice(1));
+												treeClone.find('h1').text(anchorText);
+						
+												jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
+						
+												pathArray = idDecode(anchorHref.slice(1)).split('/');
+												user = pathArray[0];
+												repo = pathArray[1];
+												branch = pathArray[2];
+												
+												console.log( GitHub.DataCache[user]['repos'][repo]['branches'][branch]['commitSha'] );
+												console.log( GitHub.DataCache );
+												// GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, root_tree_sha, function(json, status){
+
+												// });
+											
+											}
+											jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
+										});
+									});
+								});
+							});
+						}
+						jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
 					});
 				});
 			});
 		}
-
-		jQT.goTo('#' + pageId, 'slide', $(this).hasClass('reverse'));
+		jQT.goTo('#' + pageIdUser, 'slide', $(this).hasClass('reverse'));
 	})
 	
-	$('#templateUser').bind('pageAnimationEnd', function(e, info){
-		if (!$(this).data('loaded')) {
-			// console.log('load it!');
-			$(this).append($('<div class="loadingPage">Loading</div>'));
-			$(this).data('loaded', true);  
-		}
-		else
-		{
-			// console.log('already loaded');
-		}
-	});
-	
-	$('#templateRepo').bind('pageAnimationEnd', function(e, info){
-		if (!$(this).data('loaded')) {
-			// console.log('load it!');
-			$(this).append($('<div class="loadingPage">Loading</div>'));
-			$(this).data('loaded', true);  
-		}
-		else
-		{
-			// console.log('already loaded');
-		}
-	});
+	// $('#templateUser').bind('pageAnimationEnd', function(e, info){
+	// 	if (!$(this).data('loaded')) {
+	// 		// console.log('load it!');
+	// 		$(this).append($('<div class="loadingPage">Loading</div>'));
+	// 		$(this).data('loaded', true);  
+	// 	}
+	// 	else
+	// 	{
+	// 		// console.log('already loaded');
+	// 	}
+	// });
+	// 
+	// $('#templateRepo').bind('pageAnimationEnd', function(e, info){
+	// 	if (!$(this).data('loaded')) {
+	// 		// console.log('load it!');
+	// 		$(this).append($('<div class="loadingPage">Loading</div>'));
+	// 		$(this).data('loaded', true);  
+	// 	}
+	// 	else
+	// 	{
+	// 		// console.log('already loaded');
+	// 	}
+	// });
 	
 	
 	$('a[target="_blank"]').click(function() {
