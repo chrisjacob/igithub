@@ -15,13 +15,22 @@ var jQT = new $.jQTouch({
 });
 
 $(function(){
-
-	$('#formHomeSubmit').tap(function(e){
+	$('#formHomeSearchSubmit').tap(function(e){
 		e.preventDefault();
-		user = $('#formHomeUsername').val();
+		alert('Sorry, search is not yet available.');
+	});
+	
+	$('.try').tap(function(e){
+		e.preventDefault();
+		alert('Sorry, try examples not yet available.');
+	});
+
+	$('#formHomeBrowseSubmit').tap(function(e){
+		e.preventDefault();
+		user = $('#formHomeBrowsePath').val();
 		if(user == '')
 		{
-			alert('Please enter a GitHub username');
+			alert('Please enter a GitHub username.');
 			return false;
 		}
 		

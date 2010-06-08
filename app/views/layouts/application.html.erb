@@ -24,6 +24,9 @@
 		</script>
 		
 		<style type="text/css" media="screen">
+			#jqt a {
+				color: #4183C4;
+			}
 			#jqt.fullscreen #home .info {
 				display: none;
 			}
@@ -71,8 +74,11 @@
 			#jqt .login.active {
 				
 			}
+			#jqt .info {
+				padding:10px;
+			}
 			#jqt .info-top {
-				padding:5px;
+				padding:10px;
 				background: #dce1eb;
 				text-align: center;
 				border-bottom: 1px solid rgba(76, 86, 108, .3);
@@ -81,6 +87,9 @@
 				margin:0px;
 		    text-shadow: rgba(255,255,255,.8) 0 1px 0px;
 				color: rgb(76, 86, 108);
+			}
+			#jqt .info-try {
+				border-bottom: 1px solid rgba(76, 86, 108, .3);
 			}
 		</style>
 		
@@ -96,15 +105,26 @@
 					<a class="button actionButton flip" href="#more">More</a>
 				</div>
 				<div class="info-top">
-					<h2>Find Code . Read Code</h2>
+					<h2>Find Code ~ Read Code</h2>
 				</div>
-        <form>
+        <form id="formHomeBrowse">
 					<ul class="edit rounded">
-						<li><input type="search" name="username" placeholder="user/repo/branch/path/to/file.txt" id="formHomeUsername" value="" /></li>
+						<li><input type="search" name="path" placeholder="user/repo/branch/folder/file.txt" id="formHomeBrowsePath" value="" /></li>
 					</ul>
-				<ul class="individual">
-					<li><a id="formHomeSubmit" class="basicButton" href="#">GO!</a></li>
-				</ul>
+					<ul class="individual">
+						<li><a id="formHomeBrowseSubmit" class="basicButton" href="#">GO!</a></li>
+					</ul>
+        </form>
+				<div class="info info-try">
+					<p>Try:&nbsp; <a class="try" href="drnic">drnic</a> &nbsp;-&nbsp; <a class="try" href="rails/rails">rails/rails</a> &nbsp;-&nbsp; <a class="try" href="chrisjacob/igithub/master">chrisjacob/igithub/master</a></p>
+				</div>
+        <form id="formHomeSearch">
+					<ul class="edit rounded">
+						<li><input type="search" name="query" placeholder="Search GitHub" id="formHomeSearchQuery" value="" /></li>
+					</ul>
+					<ul class="individual">
+						<li><a id="formHomeSearchSubmit" class="basicButton" href="#">FIND</a></li>
+					</ul>
         </form>
 				<div class="info">
 					<p>Add to your home screen to view full screen mode.</p>
