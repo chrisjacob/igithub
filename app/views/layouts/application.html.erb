@@ -62,6 +62,26 @@
 				width:auto;
 				float:none;
 			}
+			#jqt .login {
+				left: 6px;
+				right: auto;
+				padding: 0;
+				max-width: 55px;
+			}
+			#jqt .login.active {
+				
+			}
+			#jqt .info-top {
+				padding:5px;
+				background: #dce1eb;
+				text-align: center;
+				border-bottom: 1px solid rgba(76, 86, 108, .3);
+			}
+			#jqt .info-top h2 {
+				margin:0px;
+		    text-shadow: rgba(255,255,255,.8) 0 1px 0px;
+				color: rgb(76, 86, 108);
+			}
 		</style>
 		
 	</head>
@@ -72,24 +92,29 @@
 			<div id="home" class="current">
 				<div class="toolbar">
 					<h1>iGitHub</h1>
-					<a class="button slideup" href="#more">More</a>
+					<a class="button login flip" href="#more">Login</a>
+					<a class="button actionButton flip" href="#more">More</a>
+				</div>
+				<div class="info-top">
+					<h2>Find Code . Read Code</h2>
 				</div>
         <form>
 					<ul class="edit rounded">
-						<li><input type="text" name="username" placeholder="GitHub Username" id="formHomeUsername" value="chrisjacob" /></li>
+						<li><input type="search" name="username" placeholder="user/repo/branch/path/to/file.txt" id="formHomeUsername" value="" /></li>
 					</ul>
 				<ul class="individual">
 					<li><a id="formHomeSubmit" class="basicButton" href="#">GO!</a></li>
 				</ul>
         </form>
 				<div class="info">
-					<p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
+					<p>Add to your home screen to view full screen mode.</p>
 				</div>
 			</div>
 			
 			<div id="more">
 				<div class="toolbar">
 					<h1>More</h1>
+					<a class="button login" href="#">chrisjacob</a>
 					<a class="button actionButton goback" href="#">Done</a>
 				</div>
 				<div class="content">
@@ -103,7 +128,8 @@
 			<div id="templateUser">
 				<div class="toolbar">
 					<h1>User Name</h1>
-					<a class="button slideup" href="#more">More</a>
+					<a class="back" href="#">Back</a>
+					<a class="button actionButton flip" href="#more">More</a>
 				</div>
 				<div class="loadingPage">Loading</div>
 			</div>
@@ -111,7 +137,8 @@
 			<div id="templateRepo">
 				<div class="toolbar">
 					<h1>Repo Name</h1>
-					<a class="button slideup" href="#more">More</a>
+					<a class="back" href="#">Back</a>
+					<a class="button actionButton flip" href="#more">More</a>
 				</div>
 				<div class="loadingPage">Loading</div>
 			</div>
@@ -119,7 +146,8 @@
 			<div id="templateTree">
 				<div class="toolbar">
 					<h1>Tree Name</h1>
-					<a class="button slideup" href="#more">More</a>
+					<a class="back" href="#">Back</a>
+					<a class="button actionButton flip" href="#more">More</a>
 				</div>
 				<div class="loadingPage">Loading</div>
 			</div>
