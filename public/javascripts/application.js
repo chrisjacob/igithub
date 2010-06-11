@@ -128,41 +128,97 @@ $(function(){
 										dict_branches_branch['idEncode'] = pageIdBranch;
 										dict_branches_branch['commitSha'] = commitSha;
 										dict_branches_branch['trees'] = {};
+										dict_branches_branch['blobs'] = {};
 										
 										repoCloneListItem = $('<li class="arrow"><a href="#'+pageIdBranch+'">'+branchName+'</a></li>');
 										repoCloneList.append(repoCloneListItem);
 									});
+								});
+									
+								GitHub.DataCache[user]['repos'][repo]['branches'] = dict_branches;
 
-									GitHub.DataCache[user]['repos'][repo]['branches'] = dict_branches;
+								repoClone.find('ul li a').each(function(i){
+			
+									$(this).bind('click', function(e){
+										anchorHref = $(this).attr('href');
+										anchorText = $(this).text();
 
-									repoClone.find('ul li a').each(function(i){
-				
-										$(this).bind('click', function(e){
-											anchorHref = $(this).attr('href');
-											anchorText = $(this).text();
-
-											if($(anchorHref).length < 1)
-											{
-												treeClone = $('#templateTree').clone(true);
-												treeClone.appendTo('#jqt').attr('id', anchorHref.slice(1));
-												treeClone.find('h1').text(anchorText);
-						
-												jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
-						
-												pathArray = idDecode(anchorHref.slice(1)).split('/');
-												user = pathArray[0];
-												repo = pathArray[1];
-												branch = pathArray[2];
-												
-												console.log( GitHub.DataCache[user]['repos'][repo]['branches'][branch]['commitSha'] );
-												console.log( GitHub.DataCache );
-												// GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, root_tree_sha, function(json, status){
-
-												// });
-											
-											}
+										if($(anchorHref).length < 1)
+										{
+											treeClone = $('#templateTree').clone(true);
+											treeClone.appendTo('#jqt').attr('id', anchorHref.slice(1));
+											treeClone.find('h1').text(anchorText);
+					
 											jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
-										});
+					
+											pathArray = idDecode(anchorHref.slice(1)).split('/');
+											user = pathArray[0];
+											repo = pathArray[1];
+											branchName = pathArray[2];
+											
+											branchSha = GitHub.DataCache[user]['repos'][repo]['branches'][branchName]['commitSha'];
+
+											GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, branchSha, function(json, status){
+												treeClone.find('.loadingPage').remove();
+												treeCloneList = $('<ul class="rounded"></ul>');
+												treeClone.append(treeCloneList);
+
+												dict_objects = {};
+												dict_objects['trees'] = {};
+												dict_objects['blobs'] = {};
+
+												$.each(json, function(i){
+													objectName = this.name
+													pageIdObject = idEncode( user + '/' + repo + '/' + branchName + '/' + objectName );
+													
+													if(this.type == 'tree')
+													{
+														dict_objects_object = dict_objects['trees'][objectName] = {}
+													}
+													else if(this.type == 'blob')
+													{
+														dict_objects_object = dict_objects['blobs'][objectName] = {}
+													}
+													
+													dict_objects_object['name'] = objectName;
+													dict_objects_object['idEncode'] = pageIdObject;
+													dict_objects_object['commitSha'] = this.sha;
+													
+													if(this.type == 'tree')
+													{
+														dict_objects_object['trees'] = {};
+													}
+													else if(this.type == 'blob')
+													{
+														dict_objects_object['size'] = this.size;
+														dict_objects_object['mime_type'] = this.mime_type;
+													}
+
+													treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'">'+objectName+'</a></li>');
+													treeCloneList.append(treeCloneListItem);
+												});
+												
+												GitHub.DataCache[user]['repos'][repo]['branches'][branchName]['trees'] = dict_objects['trees'];
+												GitHub.DataCache[user]['repos'][repo]['branches'][branchName]['blobs'] = dict_objects['blobs'];
+												
+console.log( GitHub.DataCache );
+												
+												treeClone.find('ul li a').each(function(i){
+													$(this).bind('click', function(e){
+														anchorHref = $(this).attr('href');
+														anchorText = $(this).text();
+			
+														if($(anchorHref).length < 1)
+														{
+															alert('dead end');
+															return false;
+														}
+														jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
+													});
+												});
+											});
+										}
+										jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
 									});
 								});
 							});
