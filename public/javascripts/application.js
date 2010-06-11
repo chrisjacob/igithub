@@ -15,17 +15,34 @@ var jQT = new $.jQTouch({
 });
 
 $(function(){
+	$('#formHomeSearch').submit(function(e){
+		e.preventDefault();
+		alert('Sorry, search is not yet available.');
+		return false;
+	});
+	
 	$('#formHomeSearchSubmit').tap(function(e){
 		e.preventDefault();
 		alert('Sorry, search is not yet available.');
+		return false;
 	});
 	
 	$('.try').tap(function(e){
 		e.preventDefault();
 		alert('Sorry, try examples not yet available.');
 	});
+	
+	$('#formHomeBrowse').submit(function(e){
+		loadUser(e);
+		return false;
+	});
 
 	$('#formHomeBrowseSubmit').tap(function(e){
+		loadUser(e);
+		return false;
+	});
+		
+	function loadUser(e){	
 		e.preventDefault();
 		user = $('#formHomeBrowsePath').val();
 		if(user == '')
@@ -156,7 +173,7 @@ $(function(){
 			});
 		}
 		jQT.goTo('#' + pageIdUser, 'slide', $(this).hasClass('reverse'));
-	})
+	};
 	
 	// $('#templateUser').bind('pageAnimationEnd', function(e, info){
 	// 	if (!$(this).data('loaded')) {
