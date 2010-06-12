@@ -119,14 +119,14 @@ $(function(){
 
 									$(branchNames).each(function(i){
 										branchName = String(this);
-										commitSha = branches[this];
+										sha = branches[this];
 										
 										pageIdBranch = idEncode( user + '/' + repo + '/' + branchName );
 										
 										dict_branches_branch = dict_branches[branchName] = {};
 										dict_branches_branch['name'] = branchName;
 										dict_branches_branch['idEncode'] = pageIdBranch;
-										dict_branches_branch['commitSha'] = commitSha;
+										dict_branches_branch['sha'] = sha;
 										dict_branches_branch['trees'] = {};
 										dict_branches_branch['blobs'] = {};
 										
@@ -156,7 +156,7 @@ $(function(){
 											repo = pathArray[1];
 											branchName = pathArray[2];
 											
-											branchSha = GitHub.DataCache[user]['repos'][repo]['branches'][branchName]['commitSha'];
+											branchSha = GitHub.DataCache[user]['repos'][repo]['branches'][branchName]['sha'];
 
 											GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, branchSha, function(json, status){
 												treeClone.find('.loadingPage').remove();
@@ -182,11 +182,12 @@ $(function(){
 													
 													dict_objects_object['name'] = objectName;
 													dict_objects_object['idEncode'] = pageIdObject;
-													dict_objects_object['commitSha'] = this.sha;
+													dict_objects_object['sha'] = this.sha;
 													
 													if(this.type == 'tree')
 													{
 														dict_objects_object['trees'] = {};
+														dict_objects_object['blobs'] = {};
 													}
 													else if(this.type == 'blob')
 													{
@@ -207,11 +208,10 @@ console.log( GitHub.DataCache );
 													$(this).bind('click', function(e){
 														anchorHref = $(this).attr('href');
 														anchorText = $(this).text();
-			
+
 														if($(anchorHref).length < 1)
 														{
-															alert('dead end');
-															return false;
+															loadTree( anchorHref, anchorText );
 														}
 														jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
 													});
@@ -230,6 +230,96 @@ console.log( GitHub.DataCache );
 		}
 		jQT.goTo('#' + pageIdUser, 'slide', $(this).hasClass('reverse'));
 	};
+	
+	function loadTree( anchorHref, anchorText )
+	{
+		treeClone = $('#templateTree').clone(true);
+		treeClone.appendTo('#jqt').attr('id', anchorHref.slice(1));
+		treeClone.find('h1').text(anchorText);
+
+		jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
+
+		pathString = idDecode(anchorHref.slice(1));
+		pathArray = pathString.split('/');
+		user = pathArray[0];
+		repo = pathArray[1];
+		branchName = pathArray[2];
+		treePath = pathArray.slice(3);
+
+		branch = GitHub.DataCache[user]['repos'][repo]['branches'][branchName];
+		branchSha = branch['sha'];
+
+		treeObject = GitHub.DataCache[user]['repos'][repo]['branches'][branchName];
+console.log(treePath);
+		$.each(treePath, function( i, tree ){
+console.log(i);
+console.log(tree);
+			treeObject = treeObject['trees'][tree]
+		});
+
+		treeSha = treeObject['sha'];
+		treeName = treeObject['name'];
+
+		GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, treeSha, function(json, status){
+			treeClone.find('.loadingPage').remove();
+			treeCloneList = $('<ul class="rounded"></ul>');
+			treeClone.append(treeCloneList);
+
+			dict_objects = {};
+			dict_objects['trees'] = {};
+			dict_objects['blobs'] = {};
+
+			$.each(json, function(i){
+				objectName = this.name;
+				pageIdObject = idEncode( pathString + '/' + objectName );
+console.log(pageIdObject);
+				if(this.type == 'tree')
+				{
+					dict_objects_object = dict_objects['trees'][objectName] = {}
+				}
+				else if(this.type == 'blob')
+				{
+					dict_objects_object = dict_objects['blobs'][objectName] = {}
+				}
+
+				dict_objects_object['name'] = objectName;
+				dict_objects_object['idEncode'] = pageIdObject;
+				dict_objects_object['sha'] = this.sha;
+
+				if(this.type == 'tree')
+				{
+					dict_objects_object['trees'] = {};
+					dict_objects_object['blobs'] = {};
+				}
+				else if(this.type == 'blob')
+				{
+					dict_objects_object['size'] = this.size;
+					dict_objects_object['mime_type'] = this.mime_type;
+				}
+
+				treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'">'+objectName+'</a></li>');
+				treeCloneList.append(treeCloneListItem);
+			});
+
+			treeObject['trees'] = dict_objects['trees'];
+			treeObject['blobs'] = dict_objects['blobs'];
+
+console.log( GitHub.DataCache );
+
+			treeClone.find('ul li a').each(function(i){
+				$(this).bind('click', function(e){
+					anchorHref = $(this).attr('href');
+					anchorText = $(this).text();
+
+					if($(anchorHref).length < 1)
+					{
+						loadTree( anchorHref, anchorText );
+					}
+					jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
+				});
+			});
+		});
+	}
 	
 	// $('#templateUser').bind('pageAnimationEnd', function(e, info){
 	// 	if (!$(this).data('loaded')) {
