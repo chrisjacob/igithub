@@ -151,7 +151,8 @@ $(function(){
 					
 											jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
 					
-											pathArray = idDecode(anchorHref.slice(1)).split('/');
+											pathString = idDecode(anchorHref.slice(1));
+											pathArray = pathString.split('/');
 											user = pathArray[0];
 											repo = pathArray[1];
 											branchName = pathArray[2];
@@ -160,49 +161,62 @@ $(function(){
 
 											GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, branchSha, function(json, status){
 												treeClone.find('.loadingPage').remove();
-												treeCloneList = $('<ul class="rounded"></ul>');
-												treeClone.append(treeCloneList);
+												treeCloneListTrees = $('<ul class="rounded trees"></ul>');
+												treeCloneListBlobs = $('<ul class="rounded blobs"></ul>');
+												treeCloneListTreesAdded = false;
+												treeCloneListBlobsAdded = false;
 
 												dict_objects = {};
 												dict_objects['trees'] = {};
 												dict_objects['blobs'] = {};
 
 												$.each(json, function(i){
-													objectName = this.name
-													pageIdObject = idEncode( user + '/' + repo + '/' + branchName + '/' + objectName );
+													objectName = this.name;
+													objectType = this.type;
+													pageIdObject = idEncode( pathString + '/' + objectName );
 													
-													if(this.type == 'tree')
+													if(objectType == 'tree')
 													{
 														dict_objects_object = dict_objects['trees'][objectName] = {}
-													}
-													else if(this.type == 'blob')
-													{
-														dict_objects_object = dict_objects['blobs'][objectName] = {}
-													}
-													
-													dict_objects_object['name'] = objectName;
-													dict_objects_object['idEncode'] = pageIdObject;
-													dict_objects_object['sha'] = this.sha;
-													
-													if(this.type == 'tree')
-													{
+														dict_objects_object['name'] = objectName;
+														dict_objects_object['idEncode'] = pageIdObject;
+														dict_objects_object['sha'] = this.sha;
+														
 														dict_objects_object['trees'] = {};
 														dict_objects_object['blobs'] = {};
+														
+														treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'" class="'+objectType+'">'+objectName+'</a></li>');
+														treeCloneListTrees.append(treeCloneListItem);
+														treeCloneListTreesAdded = true;
 													}
-													else if(this.type == 'blob')
+													else if(objectType == 'blob')
 													{
+														dict_objects_object = dict_objects['blobs'][objectName] = {}
+														dict_objects_object['name'] = objectName;
+														dict_objects_object['idEncode'] = pageIdObject;
+														dict_objects_object['sha'] = this.sha;
+														
 														dict_objects_object['size'] = this.size;
 														dict_objects_object['mime_type'] = this.mime_type;
+														
+														treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'" class="'+objectType+'">'+objectName+'</a></li>');
+														treeCloneListBlobs.append(treeCloneListItem);
+														treeCloneListBlobsAdded = true;
 													}
-
-													treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'">'+objectName+'</a></li>');
-													treeCloneList.append(treeCloneListItem);
 												});
+												
+												if( treeCloneListTreesAdded )
+												{
+													treeClone.append(treeCloneListTrees);
+												}
+
+												if( treeCloneListBlobsAdded )
+												{
+													treeClone.append(treeCloneListBlobs);
+												}
 												
 												GitHub.DataCache[user]['repos'][repo]['branches'][branchName]['trees'] = dict_objects['trees'];
 												GitHub.DataCache[user]['repos'][repo]['branches'][branchName]['blobs'] = dict_objects['blobs'];
-												
-console.log( GitHub.DataCache );
 												
 												treeClone.find('ul li a').each(function(i){
 													$(this).bind('click', function(e){
@@ -211,7 +225,14 @@ console.log( GitHub.DataCache );
 
 														if($(anchorHref).length < 1)
 														{
-															loadTree( anchorHref, anchorText );
+															if($(this).hasClass('tree'))
+															{
+																loadTree( anchorHref, anchorText );
+															}
+															else
+															{
+																loadBlob( anchorHref, anchorText );
+															}
 														}
 														jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
 													});
@@ -250,11 +271,9 @@ console.log( GitHub.DataCache );
 		branchSha = branch['sha'];
 
 		treeObject = GitHub.DataCache[user]['repos'][repo]['branches'][branchName];
-console.log(treePath);
-		$.each(treePath, function( i, tree ){
-console.log(i);
-console.log(tree);
-			treeObject = treeObject['trees'][tree]
+
+		$.each(treePath, function( i, name ){
+			treeObject = treeObject['trees'][name];
 		});
 
 		treeSha = treeObject['sha'];
@@ -262,8 +281,10 @@ console.log(tree);
 
 		GitHub.ObjectAPI.TreeShowUserRepoSha(user, repo, treeSha, function(json, status){
 			treeClone.find('.loadingPage').remove();
-			treeCloneList = $('<ul class="rounded"></ul>');
-			treeClone.append(treeCloneList);
+			treeCloneListTrees = $('<ul class="rounded trees"></ul>');
+			treeCloneListBlobs = $('<ul class="rounded blobs"></ul>');
+			treeCloneListTreesAdded = false;
+			treeCloneListBlobsAdded = false;
 
 			dict_objects = {};
 			dict_objects['trees'] = {};
@@ -271,40 +292,51 @@ console.log(tree);
 
 			$.each(json, function(i){
 				objectName = this.name;
+				objectType = this.type;
 				pageIdObject = idEncode( pathString + '/' + objectName );
-console.log(pageIdObject);
-				if(this.type == 'tree')
-				{
-					dict_objects_object = dict_objects['trees'][objectName] = {}
-				}
-				else if(this.type == 'blob')
-				{
-					dict_objects_object = dict_objects['blobs'][objectName] = {}
-				}
 
-				dict_objects_object['name'] = objectName;
-				dict_objects_object['idEncode'] = pageIdObject;
-				dict_objects_object['sha'] = this.sha;
-
-				if(this.type == 'tree')
+				if(objectType == 'tree')
 				{
+					dict_objects_object = dict_objects['trees'][objectName] = {};
+					dict_objects_object['name'] = objectName;
+					dict_objects_object['idEncode'] = pageIdObject;
+					dict_objects_object['sha'] = this.sha;
+					
 					dict_objects_object['trees'] = {};
 					dict_objects_object['blobs'] = {};
+					
+					treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'" class="'+objectType+'">'+objectName+'</a></li>');
+					treeCloneListTrees.append(treeCloneListItem);
+					treeCloneListTreesAdded = true;
 				}
-				else if(this.type == 'blob')
+				else if(objectType == 'blob')
 				{
+					dict_objects_object = dict_objects['blobs'][objectName] = {};
+					dict_objects_object['name'] = objectName;
+					dict_objects_object['idEncode'] = pageIdObject;
+					dict_objects_object['sha'] = this.sha;
+					
 					dict_objects_object['size'] = this.size;
 					dict_objects_object['mime_type'] = this.mime_type;
+					
+					treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'" class="'+objectType+'">'+objectName+'</a></li>');
+					treeCloneListBlobs.append(treeCloneListItem);
+					treeCloneListBlobsAdded = true;
 				}
-
-				treeCloneListItem = $('<li class="arrow"><a href="#'+pageIdObject+'">'+objectName+'</a></li>');
-				treeCloneList.append(treeCloneListItem);
 			});
+			
+			if( treeCloneListTreesAdded )
+			{
+				treeClone.append(treeCloneListTrees);
+			}
+			
+			if( treeCloneListBlobsAdded )
+			{
+				treeClone.append(treeCloneListBlobs);
+			}
 
 			treeObject['trees'] = dict_objects['trees'];
 			treeObject['blobs'] = dict_objects['blobs'];
-
-console.log( GitHub.DataCache );
 
 			treeClone.find('ul li a').each(function(i){
 				$(this).bind('click', function(e){
@@ -313,11 +345,88 @@ console.log( GitHub.DataCache );
 
 					if($(anchorHref).length < 1)
 					{
-						loadTree( anchorHref, anchorText );
+						if($(this).hasClass('tree'))
+						{
+							loadTree( anchorHref, anchorText );
+						}
+						else
+						{
+							loadBlob( anchorHref, anchorText );
+						}
 					}
 					jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
 				});
 			});
+		});
+	}
+	
+	
+	function loadBlob( anchorHref, anchorText )
+	{
+		blobClone = $('#templateBlob').clone(true);
+		blobClone.appendTo('#jqt').attr('id', anchorHref.slice(1));
+		blobClone.find('h1').text(anchorText);
+
+		jQT.goTo(anchorHref, 'slide', $(this).hasClass('reverse'));
+
+		pathString = idDecode(anchorHref.slice(1));
+		pathArray = pathString.split('/');
+		user = pathArray[0];
+		repo = pathArray[1];
+		branchName = pathArray[2];
+		blobPath = pathArray.slice(3);
+		blobPathLength = blobPath.length;
+		blobPathString = blobPath.join('/');
+		
+		branch = GitHub.DataCache[user]['repos'][repo]['branches'][branchName];
+		branchSha = branch['sha'];
+
+		blobObject = GitHub.DataCache[user]['repos'][repo]['branches'][branchName];
+
+		$.each(blobPath, function( i, name ){
+			if( i != blobPathLength - 1)
+			{
+				blobObject = blobObject['trees'][name];
+			}
+			else
+			{
+				blobObject = blobObject['blobs'][name];
+			}
+		});
+
+		blobSha = blobObject['sha'];
+		blobName = blobObject['name'];
+		blobMimeType = blobObject['mime_type'];
+
+		GitHub.ObjectAPI.BlobShowUserRepoShaPath(user, repo, branchSha, blobPathString, function(json, status){
+			blobClone.find('.loadingPage').remove();
+			blobCloneContentWrapper = $('<div class="code"></div>');
+
+			blobData = json.blob.data;
+			
+			// Not sure if we need to store the blob data in the GitHub.DataCache ... would bloat the array.
+			// blobObject['data'] = blobData;
+
+			var mime_match = /text\//i
+			if(!mime_match.test(blobMimeType))
+			{
+				// we don't yet support non-text files such as binary files
+			}
+			else
+			{
+				// // plain text
+				// blobCloneContent = $('<pre class="plain"></pre>');
+				// blobCloneContent.text(blobData);
+				// // .text() calls the DOM method .createTextNode(), which replaces special characters with their HTML entity equivalents (such as &lt; for <).
+
+				// styled text
+				blobCloneContent = $('<pre class="prettyprint"></pre>');
+				blobCloneContent.text(blobData).html(prettyPrintOne(blobCloneContent.html()));
+				// .prettyPrintOne() allows you to pass in a string to be prettified. 
+			}
+			
+			blobCloneContentWrapper.append(blobCloneContent);
+			blobClone.append(blobCloneContentWrapper);
 		});
 	}
 	

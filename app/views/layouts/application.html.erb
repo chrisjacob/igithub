@@ -131,7 +131,8 @@
 				</div>
         <form id="formHomeBrowse">
 					<ul class="edit rounded">
-						<li><input type="text" name="path" placeholder="user / repo / branch" id="formHomeBrowsePath" value="chrisjacob" /></li>
+						<!-- <li><input type="text" name="path" placeholder="user / repo / branch" id="formHomeBrowsePath" value="chrisjacob" /></li> -->
+						<li><input type="text" name="path" placeholder="username" id="formHomeBrowsePath" value="" /></li>
 					</ul>
 					<ul class="individual">
 						<li><a id="formHomeBrowseSubmit" class="basicButton" href="#">Go</a></li>
@@ -167,7 +168,7 @@
 				</div>
 			</div>
 			
-			<div id="templateUser">
+			<div id="templateUser" class="user">
 				<div class="toolbar">
 					<h1>User Name</h1>
 					<a class="back" href="#">Back</a>
@@ -176,7 +177,7 @@
 				<div class="loadingPage">Loading</div>
 			</div>
 			
-			<div id="templateRepo">
+			<div id="templateRepo" class="repo">
 				<div class="toolbar">
 					<h1>Repo Name</h1>
 					<a class="back" href="#">Back</a>
@@ -185,9 +186,18 @@
 				<div class="loadingPage">Loading</div>
 			</div>
 			
-			<div id="templateTree">
+			<div id="templateTree" class="tree">
 				<div class="toolbar">
 					<h1>Tree Name</h1>
+					<a class="back" href="#">Back</a>
+					<a class="button actionButton flip" href="#more">More</a>
+				</div>
+				<div class="loadingPage">Loading</div>
+			</div>
+
+			<div id="templateBlob" class="blob">
+				<div class="toolbar">
+					<h1>Blob Name</h1>
 					<a class="back" href="#">Back</a>
 					<a class="button actionButton flip" href="#more">More</a>
 				</div>
